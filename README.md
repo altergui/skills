@@ -14,6 +14,7 @@ claude plugin install vocdoni-integrator-sdk@vocdoni
 # Internal tooling we use at Vocdoni:
 claude plugin install vocdoni-go@vocdoni
 claude plugin install vocdoni-stripe@vocdoni
+claude plugin install dev-stack@vocdoni
 claude plugin install pi-subagent@vocdoni   # MCP server + agents — needs Pi (see its README)
 
 # Or grab everything in one shot (skill plugins only; pi-subagent is Claude Code-only)
@@ -69,6 +70,14 @@ Tooling we use internally for our own development workflow. Nothing stops you fr
 
 Requires `jq` and either the [Stripe CLI](https://docs.stripe.com/stripe-cli) with a started session (`stripe login`, then `stripe agent setup` for its own skill) or a Stripe MCP server.
 
+### 🧭 `dev-stack` — controlled delivery of engineering work
+
+| Skill                  | What it covers |
+| ---------------------- | -------------- |
+| `engineering-delivery` | How the main session runs any multi-step change that will be merged: size the work (spike / bounded / architectural), write and audit a spec, have a plan drafted and pre-flight audited, dispatch one subagent per task with a strict prompt contract, review every diff, run a whole-branch gate audit, then merge and release only on the owner's OK. Fable is the independent auditor and consultant; a ledger in `.delivery/` survives context compaction. Ships audit and dispatch prompts, spec and plan templates, and `init-workspace.sh` / `task-brief.sh`. |
+
+The plugin also installs a **SessionStart hook** so the model loads the skill on its own for feature, refactor, protocol, migration, multi-repo, deploy and benchmark work, and resumes any unfinished `.delivery/` ledger in the current repo. The hook is Claude Code-only; an npx install gets the skill, which still triggers from its description.
+
 ### 🤖 `pi-subagent` — delegate to Pi subagents
 
 Delegate work to **named [Pi][pi] subagents** — reusable personas, each with its own model and tools (including MCP tools) — and to bounded one-off coding tasks. Unlike the skill plugins above, this one bundles a local **MCP server** that launches Pi (`pi --mode rpc`), isolates code edits in a detached **git worktree**, and hands back a summary plus a diff to review. Changes are never applied automatically.
@@ -100,6 +109,7 @@ claude plugin install davinci-sdk@vocdoni
 claude plugin install vocdoni-integrator-sdk@vocdoni
 claude plugin install vocdoni-go@vocdoni
 claude plugin install vocdoni-stripe@vocdoni
+claude plugin install dev-stack@vocdoni
 claude plugin install pi-subagent@vocdoni   # see plugins/claude-pi-subagent/plugins/pi-subagent/README.md
 ```
 
@@ -122,6 +132,7 @@ npx @vocdoni/skills install --plugin go
 npx @vocdoni/skills install --plugin sdk
 npx @vocdoni/skills install --plugin integrator-sdk   # remote plugin, cloned on demand
 npx @vocdoni/skills install --plugin davinci-sdk      # full name (no vocdoni- prefix)
+npx @vocdoni/skills install --plugin dev-stack        # skill only; the SessionStart hook is Claude Code plugin-only
 
 # A single skill, looked up across plugins
 npx @vocdoni/skills install go-modern
@@ -159,6 +170,8 @@ Skills are plain directories at `plugins/<plugin>/skills/<skill>/`.
 │   ├── davinci-sdk/
 │   │   └── …
 │   ├── vocdoni-stripe/
+│   │   └── …
+│   ├── dev-stack/                      # skill + SessionStart hook (hooks/)
 │   │   └── …
 │   └── claude-pi-subagent/             # nested marketplace (pi-agent-tools)
 │       └── plugins/pi-subagent/        # MCP server plugin + agents — see its README

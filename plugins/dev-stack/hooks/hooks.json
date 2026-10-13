@@ -1,0 +1,16 @@
+{
+  "description": "Tells the model when to load the engineering-delivery skill, and flags unfinished deliveries in the current repo",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
