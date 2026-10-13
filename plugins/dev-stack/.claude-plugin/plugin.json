@@ -1,0 +1,22 @@
+{
+  "name": "dev-stack",
+  "version": "0.1.0",
+  "description": "A controlled way to run non-trivial engineering work with Claude Code. The engineering-delivery skill sizes the work, writes and audits a spec and plan, delegates implementation to subagents task by task, reviews every diff, runs a strict whole-branch gate audit, then merges and releases only with the owner's explicit OK. Ships audit and dispatch prompt templates, spec and plan templates, a ledger that survives context compaction, and scripts that generate per-task briefs. A SessionStart hook tells the model when to load the skill without being asked, and flags unfinished deliveries in the current repo.",
+  "author": {
+    "name": "Vocdoni",
+    "url": "https://vocdoni.io"
+  },
+  "homepage": "https://github.com/vocdoni/skills",
+  "repository": "https://github.com/vocdoni/skills",
+  "license": "AGPL-3.0-or-later",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "subagents",
+    "orchestration",
+    "code-review",
+    "audit",
+    "planning",
+    "workflow"
+  ]
+}
