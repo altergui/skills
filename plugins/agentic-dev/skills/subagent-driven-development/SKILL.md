@@ -1,9 +1,9 @@
 ---
-name: engineering-delivery
+name: subagent-driven-development
 description: Runs engineering work that needs a plan as a controlled delivery. The main session sizes the work, designs it with the user, delegates implementation to subagents task by task and reviews every diff. Fable audits each spec, plan and branch before merge. Load it proactively, without being asked, when a request implies multi-step code changes that will be merged. That includes requests phrased as a question or a wish ("can X do Y?", "it would be nice to have...") whenever your answer would propose a design. Examples are implementing a feature, refactoring or porting a module, changing a protocol, API, wire format or schema, migrating data, working across repos, deploying or releasing, and benchmark-driven speed-ups. Also load it when the user mentions a spec, plan, subagents, an audit or a ledger, asks to resume delivery work, or the repo has a .delivery/ folder. Load it before proposing a design or writing code. Skip it for questions about how code works, read-only investigation and fixes of one or two files.
 ---
 
-# Engineering delivery
+# Subagent-driven development
 
 You are the **controller**. You design with the owner, size the work, delegate implementation,
 review every diff yourself, run the decisive verification, keep the ledger, and report to the

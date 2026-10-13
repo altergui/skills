@@ -27,8 +27,8 @@
       "homepage": "https://github.com/vocdoni/skills"
     },
     {
-      "name": "dev-stack",
-      "source": "./plugins/dev-stack",
+      "name": "agentic-dev",
+      "source": "./plugins/agentic-dev",
       "description": "Run non-trivial engineering work as a controlled delivery: sized work, audited spec and plan, subagents implementing task by task, every diff reviewed, a strict gate audit before merge, and releases only on the owner's OK. A SessionStart hook makes the model load it without being asked.",
       "version": "0.1.0",
       "category": "engineering",
