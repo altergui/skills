@@ -27,7 +27,7 @@ json_escape() {
   printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/	/\\t/g' | awk '{ printf "%s%s", (NR > 1 ? "\\n" : ""), $0 }'
 }
 
-msg="The dev-stack plugin is installed. When a request needs multi-step code changes that will be merged (a feature, a refactor or port across modules, a protocol, API, wire-format or schema change, a data migration, work across several repos, a deploy or release, or a benchmark-driven speed-up), load the engineering-delivery skill (Skill tool, dev-stack:engineering-delivery) before brainstorming or planning, even if the user does not mention it. Skip it for questions, explanations, read-only investigation and fixes of one or two files."
+msg="The dev-stack plugin is installed. When a request needs multi-step code changes that will be merged (a feature, a refactor or port across modules, a protocol, API, wire-format or schema change, a data migration, work across several repos, a deploy or release, or a benchmark-driven speed-up), load the engineering-delivery skill (Skill tool, dev-stack:engineering-delivery) even if the user does not mention it. This includes requests phrased as a question or a wish (\"can X do Y?\", \"it would be nice to have...\") whenever your answer would propose a design. Load it before proposing a design or writing code, not after. Skip it for questions about how code works, read-only investigation and fixes of one or two files."
 
 root=$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null || true)
 open=""
