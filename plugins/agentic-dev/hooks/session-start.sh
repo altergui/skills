@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# SessionStart hook for the dev-stack plugin.
+# SessionStart hook for the agentic-dev plugin.
 #
-# Tells the model when to load the engineering-delivery skill without the user asking for it,
+# Tells the model when to load the subagent-driven-development skill without the user asking for it,
 # and lists unfinished delivery ledgers (<repo>/.delivery/*/progress.md whose last lifecycle
 # item is unticked) so a fresh or compacted session resumes them instead of starting over.
 #
@@ -27,7 +27,7 @@ json_escape() {
   printf '%s' "$1" | sed -e 's/\\/\\\\/g' -e 's/"/\\"/g' -e 's/	/\\t/g' | awk '{ printf "%s%s", (NR > 1 ? "\\n" : ""), $0 }'
 }
 
-msg="The dev-stack plugin is installed. When a request needs multi-step code changes that will be merged (a feature, a refactor or port across modules, a protocol, API, wire-format or schema change, a data migration, work across several repos, a deploy or release, or a benchmark-driven speed-up), load the engineering-delivery skill (Skill tool, dev-stack:engineering-delivery) even if the user does not mention it. This includes requests phrased as a question or a wish (\"can X do Y?\", \"it would be nice to have...\") whenever your answer would propose a design. Load it before proposing a design or writing code, not after. Skip it for questions about how code works, read-only investigation and fixes of one or two files."
+msg="The agentic-dev plugin is installed. When a request needs multi-step code changes that will be merged (a feature, a refactor or port across modules, a protocol, API, wire-format or schema change, a data migration, work across several repos, a deploy or release, or a benchmark-driven speed-up), load the subagent-driven-development skill (Skill tool, agentic-dev:subagent-driven-development) even if the user does not mention it. This includes requests phrased as a question or a wish (\"can X do Y?\", \"it would be nice to have...\") whenever your answer would propose a design. Load it before proposing a design or writing code, not after. Skip it for questions about how code works, read-only investigation and fixes of one or two files."
 
 root=$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null || true)
 open=""
@@ -52,7 +52,7 @@ if [ $count -gt 0 ]; then
   msg="$msg
 
 $lead Ledgers:$open
-If the user's request concerns that work, or they ask to continue, load engineering-delivery and follow its recovery procedure (read the ledger, check it against git log) before doing anything else. Trust the ledger and git log over memory."
+If the user's request concerns that work, or they ask to continue, load subagent-driven-development and follow its recovery procedure (read the ledger, check it against git log) before doing anything else. Trust the ledger and git log over memory."
 fi
 
 printf '{"hookSpecificOutput":{"hookEventName":"SessionStart","additionalContext":"%s"}}\n' "$(json_escape "$msg")"

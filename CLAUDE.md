@@ -66,7 +66,7 @@ node bin/install.js install --dest /tmp/skills-test --dry-run
 node bin/install.js install <skill> --symlink --force
 ```
 
-The `pi-subagent` plugin is a real TypeScript package (see below); the other plugins are pure Markdown and have no build step. `dev-stack` also ships a `hooks/hooks.json` SessionStart hook (a bash script, no build). Hooks are Claude Code plugin-only; `bin/install.js` copies skills, never hooks. Its name is generic on purpose (not `vocdoni-<topic>`); `--plugin dev-stack` resolves by exact name.
+The `pi-subagent` plugin is a real TypeScript package (see below); the other plugins are pure Markdown and have no build step. `agentic-dev` also ships a `hooks/hooks.json` SessionStart hook (a bash script, no build). Hooks are Claude Code plugin-only; `bin/install.js` copies skills, never hooks. Its name is generic on purpose (not `vocdoni-<topic>`); `--plugin agentic-dev` resolves by exact name.
 
 ## The `pi-subagent` plugin (nested marketplace)
 

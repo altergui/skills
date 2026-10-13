@@ -1,5 +1,5 @@
 {
-  "description": "Tells the model when to load the engineering-delivery skill, and flags unfinished deliveries in the current repo",
+  "description": "Tells the model when to load the subagent-driven-development skill, and flags unfinished deliveries in the current repo",
   "hooks": {
     "SessionStart": [
       {
