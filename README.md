@@ -14,6 +14,7 @@ claude plugin install vocdoni-integrator-sdk@vocdoni
 # Internal tooling we use at Vocdoni:
 claude plugin install vocdoni-go@vocdoni
 claude plugin install vocdoni-stripe@vocdoni
+claude plugin install vocdoni-internal-oauth@vocdoni
 claude plugin install agentic-dev@vocdoni
 claude plugin install pi-subagent@vocdoni   # MCP server + agents — needs Pi (see its README)
 
@@ -70,6 +71,12 @@ Tooling we use internally for our own development workflow. Nothing stops you fr
 
 Requires `jq` and either the [Stripe CLI](https://docs.stripe.com/stripe-cli) with a started session (`stripe login`, then `stripe agent setup` for its own skill) or a Stripe MCP server.
 
+### 🔑 `vocdoni-internal-oauth` — staff sign-in for internal tools
+
+| Skill                    | What it covers |
+| ------------------------ | -------------- |
+| `vocdoni-internal-oauth` | Add Google sign-in for `@vocdoni.org` accounts to an existing internal web tool through the central OpenID Connect provider at `oauth.vocdoni.org`: register the tool as a client in [vocdoni/oauth][oauth], wire the Go kit (`vocauth`) or the Node/TypeScript kit (`@vocdoni/oauth`, Express and Fetch-API frameworks), use any OIDC library or oauth2-proxy for other stacks, develop locally against the dev provider, migrate away from a shared password, rotate cookie keys and troubleshoot. |
+
 ### 🧭 `agentic-dev` — subagent-driven development with independent audits
 
 | Skill                  | What it covers |
@@ -109,6 +116,7 @@ claude plugin install davinci-sdk@vocdoni
 claude plugin install vocdoni-integrator-sdk@vocdoni
 claude plugin install vocdoni-go@vocdoni
 claude plugin install vocdoni-stripe@vocdoni
+claude plugin install vocdoni-internal-oauth@vocdoni
 claude plugin install agentic-dev@vocdoni
 claude plugin install pi-subagent@vocdoni   # see plugins/claude-pi-subagent/plugins/pi-subagent/README.md
 ```
@@ -171,6 +179,8 @@ Skills are plain directories at `plugins/<plugin>/skills/<skill>/`.
 │   │   └── …
 │   ├── vocdoni-stripe/
 │   │   └── …
+│   ├── vocdoni-internal-oauth/
+│   │   └── …
 │   ├── agentic-dev/                    # skill + SessionStart hook (hooks/)
 │   │   └── …
 │   └── claude-pi-subagent/             # nested marketplace (pi-agent-tools)
@@ -199,5 +209,6 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for the skill format, naming rules, and
 [sdk]: https://github.com/vocdoni/vocdoni-sdk
 [davinci-sdk]: https://github.com/vocdoni/davinci-sdk
 [integrator-sdk]: https://github.com/vocdoni/vocdoni-integrator-sdk
+[oauth]: https://github.com/vocdoni/oauth
 [vocdoni]: https://vocdoni.io
 [pi]: https://www.npmjs.com/package/@earendil-works/pi-coding-agent
