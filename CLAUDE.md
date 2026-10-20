@@ -42,7 +42,7 @@ A marketplace entry whose `source` is a **git source object** is not in this rep
 
 **Use the object form, never a bare URL string.** `resolveRemoteSource` in `bin/install.js` still accepts `"https://…"`/`"git@…"` strings for backwards compatibility, but Claude Code's marketplace parser does not — it fails the install with *"This plugin uses a source type your Claude Code version does not support"*, which reads like a version problem and is not one. Supported object types: `github` (`repo`, optional `ref`/`sha`), `url`/`git` (`url`, optional `ref`/`sha`), and `git-subdir` (`url` + `path`) for a plugin inside a monorepo.
 
-Consequence: `marketplace.json` has **7** entries but `bin/install.js list` shows **6** plugins — five local skill plugins plus the remote one, tagged `[remote: …]`. `pi-subagent` is the missing seventh: it lives at `plugins/claude-pi-subagent/` with no `plugin.json` at that level (its real plugin is one directory deeper), so the npx CLI cannot see it. This is intentional: `pi-subagent` is Claude Code-only (it needs Pi and an MCP server) and is reachable only through the root `marketplace.json` entry, never via `npx @vocdoni/skills`.
+Consequence: `marketplace.json` has **8** entries but `bin/install.js list` shows **7** plugins — six local skill plugins plus the remote one, tagged `[remote: …]`. `pi-subagent` is the missing eighth: it lives at `plugins/claude-pi-subagent/` with no `plugin.json` at that level (its real plugin is one directory deeper), so the npx CLI cannot see it. This is intentional: `pi-subagent` is Claude Code-only (it needs Pi and an MCP server) and is reachable only through the root `marketplace.json` entry, never via `npx @vocdoni/skills`.
 
 ## The installer (`bin/install.js`)
 
