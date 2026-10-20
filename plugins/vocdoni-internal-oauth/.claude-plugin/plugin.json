@@ -1,0 +1,23 @@
+{
+  "name": "vocdoni-internal-oauth",
+  "version": "0.1.0",
+  "description": "Add Google sign-in for @vocdoni.org staff to an existing internal web tool through the central Vocdoni OpenID Connect provider at oauth.vocdoni.org: register the tool as a client, wire the Go kit (vocauth) or the Node/TypeScript kit (@vocdoni/oauth, Express and Fetch-API frameworks), use any OIDC library or oauth2-proxy for other stacks, develop locally against the dev provider, migrate away from a shared password, rotate cookie keys and troubleshoot.",
+  "author": {
+    "name": "Vocdoni",
+    "url": "https://vocdoni.io"
+  },
+  "homepage": "https://github.com/vocdoni/skills",
+  "repository": "https://github.com/vocdoni/skills",
+  "license": "AGPL-3.0-or-later",
+  "keywords": [
+    "claude-code",
+    "skills",
+    "vocdoni",
+    "oauth",
+    "openid-connect",
+    "sso",
+    "google",
+    "dex",
+    "authentication"
+  ]
+}

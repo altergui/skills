@@ -27,6 +27,16 @@
       "homepage": "https://github.com/vocdoni/skills"
     },
     {
+      "name": "vocdoni-internal-oauth",
+      "source": "./plugins/vocdoni-internal-oauth",
+      "description": "Add @vocdoni.org Google sign-in to an internal tool through the central provider at oauth.vocdoni.org: register the client, wire the Go (vocauth) or Node (@vocdoni/oauth) kit or any OIDC library, migrate away from a shared password, troubleshoot.",
+      "version": "0.1.0",
+      "category": "engineering",
+      "tags": ["vocdoni", "oauth", "openid-connect", "sso", "google", "dex", "authentication"],
+      "license": "AGPL-3.0-or-later",
+      "homepage": "https://github.com/vocdoni/skills"
+    },
+    {
       "name": "agentic-dev",
       "source": "./plugins/agentic-dev",
       "description": "Run non-trivial engineering work as a controlled delivery: sized work, audited spec and plan, subagents implementing task by task, every diff reviewed, a strict gate audit before merge, and releases only on the owner's OK. A SessionStart hook makes the model load it without being asked.",
